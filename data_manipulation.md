@@ -553,7 +553,7 @@ litters_df <-
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-litter_df <- 
+litters_df <- 
   read_csv("data/FAS_litters.csv") %>% 
   janitor::clean_names() %>% 
   select(-pups_survive) %>% 
@@ -562,7 +562,8 @@ litter_df <-
     group = str_to_lower(group)
   ) %>% 
   drop_na(weight_change) %>% 
-  filter(group %in% c("con7", "con8"))
+  filter(group %in% c("con7", "con8")) %>% 
+  select(litter_number, group, weight_change, everything())
 ```
 
     ## Rows: 49 Columns: 8
